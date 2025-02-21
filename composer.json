@@ -1,0 +1,41 @@
+{
+    "name": "yuges-code/laravel-subscribable",
+    "description": "Package for easily attaching subscriptions to Laravel eloquent models",
+    "license": "MIT",
+    "keywords": [
+        "yuges",
+        "laravel",
+        "subscribe",
+        "subscribable",
+        "subscription",
+        "subscriptions",
+        "laravel-subscribable"
+    ],
+    "homepage": "https://yuges-code.github.io/laravel-subscribable",
+    "support": {
+        "source": "https://github.com/yuges-code/laravel-subscribable",
+        "issues": "https://github.com/yuges-code/laravel-subscribable/issues"
+    },
+    "authors": [
+        {
+            "name": "Georgy",
+            "email": "goshasafonov@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yuges\\Subscribable\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yuges\\Subscribable\\Providers\\SubscribableServiceProvider"
+            ]
+        }
+    }
+}

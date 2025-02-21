@@ -1,1 +1,1 @@
-# laravel-subscribable
+# Laravel Subscribable
