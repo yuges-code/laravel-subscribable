@@ -25,9 +25,6 @@
     "require": {
         "php": "^8.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^12"
-    },
     "autoload": {
         "psr-4": {
             "Yuges\\Subscribable\\": "src"
@@ -40,5 +37,11 @@
                 "Yuges\\Subscribable\\Providers\\SubscribableServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0"
     }
 }
