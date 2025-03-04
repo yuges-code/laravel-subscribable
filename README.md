@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/yuges-code/laravel-package-template/master/assets/logo.png">
+    <img src="https://raw.githubusercontent.com/yuges-code/laravel-subscribable/master/assets/logo.png">
 </div>
 
 <div align="center">
@@ -7,11 +7,11 @@
     <div>
         <img
             alt="GitHub Branch Check Runs"
-            src="https://img.shields.io/github/check-runs/yuges-code/laravel-package-template/main"
+            src="https://img.shields.io/github/check-runs/yuges-code/laravel-subscribable/main"
         >
         <img
             alt="GitHub Tests Action Status"
-            src="https://img.shields.io/github/actions/workflow/status/yuges-code/laravel-package-template/testing.yml?branch=main&label=tests&style=flat-square"
+            src="https://img.shields.io/github/actions/workflow/status/yuges-code/laravel-subscribable/testing.yml?branch=main&label=tests&style=flat-square"
         >
     </div>
 </div>
@@ -19,13 +19,13 @@
 <div align="center">
     <b>Project</b>
     <div>
-        <img alt="GitHub Release" src="https://img.shields.io/github/v/release/yuges-code/laravel-package-template">
-        <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/yuges-code/laravel-package-template">
-        <img alt="GitHub License" src="https://img.shields.io/github/license/yuges-code/laravel-package-template">
-        <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/yuges-code/laravel-package-template">
+        <img alt="GitHub Release" src="https://img.shields.io/github/v/release/yuges-code/laravel-subscribable">
+        <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/yuges-code/laravel-subscribable">
+        <img alt="GitHub License" src="https://img.shields.io/github/license/yuges-code/laravel-subscribable">
+        <img alt="Packagist Stars" src="https://img.shields.io/packagist/stars/yuges-code/laravel-subscribable">
         <img
             alt="Packagist Dependency Version"
-            src="https://img.shields.io/packagist/dependency-v/yuges-code/laravel-package-template/php"
+            src="https://img.shields.io/packagist/dependency-v/yuges-code/laravel-subscribable/php"
         >
     </div>
 </div>
@@ -35,7 +35,7 @@
 </div>
 
 <div align="center">
-    <h1>Laravel package template</h1>
+    <h1>Laravel Subscribable</h1>
 </div>
 
 <div align="center">
@@ -47,10 +47,7 @@
 To use this template, clone the repository and install the dependencies:
 
 ```
-git clone https://github.com/yuges-code/laravel-package-template.git
-cd laravel-package-template
-
-composer install
+composer require yuges-code/laravel-subscribable
 ```
 
 # 🧪 Running Tests

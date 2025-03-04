@@ -2,13 +2,15 @@
 
 namespace Vendor\Template\Config;
 
-class Config
+class Config extends \Yuges\Package\Config\Config
 {
-    /** @return class-string<Template> */
-    public static function getTemplateClass()
-    {
+    const string NAME = 'subscribable';
 
+    /** @return class-string<Reaction> */
+    public static function getSubscriptionClass(mixed $default = null): string
+    {
+        return self::get('models.subscription.class', $default);
     }
 
-    # code...
+    
 }
