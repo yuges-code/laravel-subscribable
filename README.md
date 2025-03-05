@@ -39,12 +39,12 @@
 </div>
 
 <div align="center">
-    <h3>🚀 Starter template for all Yuges Laravel packages</h3>
+    <h3>🔔 Package for easily attaching subscriptions to Laravel eloquent models</h3>
 </div>
 
 # 💿 Installation
 
-To use this template, clone the repository and install the dependencies:
+You can install the package via composer:
 
 ```
 composer require yuges-code/laravel-subscribable

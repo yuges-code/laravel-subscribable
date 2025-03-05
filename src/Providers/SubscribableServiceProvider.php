@@ -8,7 +8,7 @@ use Vendor\Template\Models\Template;
 use Illuminate\Support\ServiceProvider;
 use Vendor\Template\Observers\TemplateObserver;
 
-class TemplateServiceProvider extends ServiceProvider
+class SubscribableServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {

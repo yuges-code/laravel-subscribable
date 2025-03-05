@@ -3,7 +3,7 @@
 namespace Yuges\Subscribable\Models;
 
 use Carbon\Carbon;
-use Yuges\Subscribable\Traits\HasTable;
+use Yuges\Package\Traits\HasTable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
