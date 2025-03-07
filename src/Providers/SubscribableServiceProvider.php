@@ -1,35 +1,35 @@
 <?php
 
-namespace Vendor\Template\Providers;
+namespace Yuges\Subscribable\Providers;
 
 use TypeError;
-use Vendor\Template\Config\Config;
-use Vendor\Template\Models\Template;
+use Yuges\Subscribable\Config\Config;
 use Illuminate\Support\ServiceProvider;
-use Vendor\Template\Observers\TemplateObserver;
+use Yuges\Subscribable\Models\Subscription;
+use Yuges\Subscribable\Observers\SubscriptionObserver;
 
 class SubscribableServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $class = Config::getTemplateClass();
+        $class = Config::getSubscriptionClass(Subscription::class);
 
-        if (! is_a(new $class, Template::class)) {
+        if (! is_a(new $class, Subscription::class)) {
             throw new TypeError('Invalid model');
         }
 
-        $class::observe(new TemplateObserver);
+        $class::observe(new SubscriptionObserver);
 
         $this->publishes([
-            __DIR__.'/../../config/template.php' => config_path('template.php')
-        ], 'template-config');
+            __DIR__.'/../../config/subscribable.php' => config_path('subscribable.php')
+        ], 'subscribable-config');
 
         $this->publishes([
             __DIR__.'/../../database/migrations/' => database_path('migrations')
-        ], 'template-migrations');
+        ], 'subscribable-migrations');
 
         $this->publishes([
             __DIR__.'/../../database/seeders/' => database_path('seeders')
-        ], 'template-seeders');
+        ], 'subscribable-seeders');
     }
 }

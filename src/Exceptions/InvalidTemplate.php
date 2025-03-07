@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\Template\Exceptions;
+namespace Yuges\Subscribable\Exceptions;
 
 use Exception;
 

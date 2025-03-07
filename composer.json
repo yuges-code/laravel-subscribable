@@ -1,17 +1,17 @@
 {
-    "name": "yuges-code/laravel-package-template",
-    "description": "🚀 Starter template for all Yuges Laravel packages",
+    "name": "yuges-code/laravel-subscribable",
+    "description": "🔔 Package for easily attaching subscriptions to Laravel eloquent models",
     "keywords": [
         "php",
         "yuges",
         "laravel",
         "package",
-        "template"
+        "subscriptions"
     ],
-    "homepage": "https://yuges-code.github.io/laravel-package-template",
+    "homepage": "https://yuges-code.github.io/laravel-subscribable",
     "support": {
-        "source": "https://github.com/yuges-code/laravel-package-template",
-        "issues": "https://github.com/yuges-code/laravel-package-template/issues"
+        "source": "https://github.com/yuges-code/laravel-subscribable",
+        "issues": "https://github.com/yuges-code/laravel-subscribable/issues"
     },
     "license": "MIT",
     "authors": [
@@ -30,9 +30,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Yuges\\LaravelPackageTemplate\\": "src",
-            "Yuges\\LaravelPackageTemplate\\Database\\Seeders\\": "database/seeders/",
-            "Yuges\\LaravelPackageTemplate\\Database\\Factories\\": "database/factories/"
+            "Yuges\\Subscribable\\": "src",
+            "Yuges\\Subscribable\\Database\\Seeders\\": "database/seeders/",
+            "Yuges\\Subscribable\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Yuges\\LaravelPackageTemplate\\Providers\\TemplateServiceProvider"
+                "Yuges\\Subscribable\\Providers\\SubscribableServiceProvider"
             ]
         }
     },

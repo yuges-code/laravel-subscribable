@@ -10,4 +10,6 @@ class User extends Model
     use HasTable;
 
     protected $table = 'users';
+
+    protected $guarded = ['id'];
 }

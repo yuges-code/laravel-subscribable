@@ -4,6 +4,8 @@
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     bootstrap="vendor/autoload.php"
     colors="true"
+    backupGlobals="false"
+    backupStaticProperties="false"
     displayDetailsOnPhpunitDeprecations="true"
     displayDetailsOnTestsThatTriggerErrors="true"
     displayDetailsOnTestsThatTriggerNotices="true"
@@ -17,6 +19,9 @@
         <testsuite name="Yuges feature test suite">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Yuges integration test suite">
+            <directory>tests/Integration</directory>
+        </testsuite>
     </testsuites>
     <coverage/>
     <source>
@@ -24,4 +29,7 @@
             <directory suffix=".php">src</directory>
         </include>
     </source>
+    <php>
+        <env name="DB_CONNECTION" value="testing"/>
+    </php>
 </phpunit>
