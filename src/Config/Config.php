@@ -2,9 +2,15 @@
 
 namespace Yuges\Subscribable\Config;
 
+use Illuminate\Support\Collection;
 use Yuges\Subscribable\Models\Plan;
 use Yuges\Subscribable\Models\Feature;
 use Yuges\Subscribable\Models\Subscription;
+use Yuges\Subscribable\Interfaces\Subscriber;
+use Yuges\Subscribable\Interfaces\Subscribable;
+use Yuges\Subscribable\Actions\CreateSubscriptionAction;
+use Yuges\Subscribable\Actions\DeleteSubscriptionAction;
+use Yuges\Subscribable\Actions\ToggleSubscriptionAction;
 
 class Config extends \Yuges\Package\Config\Config
 {
@@ -28,4 +34,59 @@ class Config extends \Yuges\Package\Config\Config
         return self::get('models.subscription.class', $default);
     }
 
+    /** @return class-string<Subscriber> */
+    public static function getSubscriberDefaultClass(mixed $default = null): string
+    {
+        return self::get('models.subscriber.default', $default);
+    }
+
+    /** @return Collection<array-key, class-string<Subscriber>> */
+    public static function getSubscriberAllowedClasses(mixed $default = null): Collection
+    {
+        return Collection::make(
+            self::get('models.subscriber.allowed', $default)
+        );
+    }
+
+    public static function getCreateSubscriptionAction(
+        Subscribable $subscribable,
+        mixed $default = null
+    ): CreateSubscriptionAction
+    {
+        return self::getCreateSubscriptionActionClass($default)::create($subscribable);
+    }
+
+    /** @return class-string<CreateSubscriptionAction> */
+    public static function getCreateSubscriptionActionClass(mixed $default = null): string
+    {
+        return self::get('actions.create', $default);
+    }
+
+    public static function getDeleteSubscriptionAction(
+        Subscribable $subscribable,
+        mixed $default = null
+    ): DeleteSubscriptionAction
+    {
+        return self::getDeleteSubscriptionActionClass($default)::create($subscribable);
+    }
+
+    /** @return class-string<DeleteSubscriptionAction> */
+    public static function getDeleteSubscriptionActionClass(mixed $default = null): string
+    {
+        return self::get('actions.delete', $default);
+    }
+
+    public static function getToggleSubscriptionAction(
+        Subscribable $subscribable,
+        mixed $default = null
+    ): ToggleSubscriptionAction
+    {
+        return self::getToggleSubscriptionActionClass($default)::create($subscribable);
+    }
+
+    /** @return class-string<ToggleSubscriptionAction> */
+    public static function getToggleSubscriptionActionClass(mixed $default = null): string
+    {
+        return self::get('actions.toggle', $default);
+    }
 }

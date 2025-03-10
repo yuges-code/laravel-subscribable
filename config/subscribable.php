@@ -1,21 +1,24 @@
 <?php
 
 // Config for yuges/subscribable
+
+use Yuges\Package\Enums\KeyType;
+
 return [
     /*
-     * FQCN (Fully Qualified Class Name) of the models to use for comments
+     * FQCN (Fully Qualified Class Name) of the models to use for subscriptions
      */
     'models' => [
         'plan' => [
-            'key' => 'ulid',
+            'key' => KeyType::Ulid,
             'class' => Yuges\Subscribable\Models\Plan::class,
         ],
         'feature' => [
-            'key' => 'ulid',
+            'key' => KeyType::Ulid,
             'class' => Yuges\Subscribable\Models\Feature::class,
         ],
         'subscriber' => [
-            'key' => 'ulid',
+            'key' => KeyType::Ulid,
             'default' => [
                 'class' => \App\Models\User::class,
             ],
@@ -26,7 +29,10 @@ return [
             ],
         ],
         'subscribable' => [
-            'key' => 'ulid',
+            'key' => KeyType::Ulid,
+            'default' => [
+                'class' => \App\Models\User::class,
+            ],
             'allowed' => [
                 'classes' => [
                     \App\Models\User::class,
@@ -34,8 +40,8 @@ return [
             ],
         ],
         'subscription' => [
-            'key' => 'ulid',
-            'class' => Yuges\Reactable\Models\Reaction::class,
+            'key' => KeyType::Ulid,
+            'class' => Yuges\Subscribable\Models\Subscription::class,
         ],
     ],
 
@@ -45,7 +51,8 @@ return [
     ],
 
     'actions' => [
-        'create' => Yuges\Reactable\Actions\CreateReactionAction::class,
-        'toggle' => Yuges\Reactable\Actions\ToggleReactionAction::class,
+        'create' => Yuges\Subscribable\Actions\CreateSubscriptionAction::class,
+        'delete' => Yuges\Subscribable\Actions\DeleteSubscriptionAction::class,
+        'toggle' => Yuges\Subscribable\Actions\ToggleSubscriptionAction::class,
     ],
 ];

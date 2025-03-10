@@ -4,15 +4,15 @@ namespace Yuges\Subscribable\Exceptions;
 
 use Exception;
 
-class InvalidTemplate extends Exception
+class InvalidSubscriber extends Exception
 {
     public static function doesNotContainInAllowedConfig(string $class): self
     {
-        return new static("Template class `{$class}` doesn't contain in allowed templates config");
+        return new static("Subscriber class `{$class}` doesn't contain in allowed subscribers config");
     }
 
     public static function doesNotContainInDefaultConfig(string $class): self
     {
-        return new static("Template class `{$class}` doesn't contain in default template config");
+        return new static("Subscriber class `{$class}` doesn't contain in default subscriber config");
     }
 }
