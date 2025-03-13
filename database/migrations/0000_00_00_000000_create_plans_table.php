@@ -4,7 +4,6 @@ use Yuges\Package\Enums\KeyType;
 use Yuges\Subscribable\Models\Plan;
 use Yuges\Subscribable\Config\Config;
 use Yuges\Package\Database\Schema\Schema;
-use Yuges\Subscribable\Models\Subscription;
 use Yuges\Package\Database\Schema\Blueprint;
 use Yuges\Package\Database\Migrations\Migration;
 
@@ -12,7 +11,7 @@ return new class extends Migration
 {
     public function __construct()
     {
-        $this->table = Config::getSubscriptionClass(Subscription::class)::getTableName();
+        $this->table = Config::getPlanClass(Plan::class)::getTableName();
     }
 
     public function up(): void
@@ -22,16 +21,16 @@ return new class extends Migration
         }
 
         Schema::create($this->table, function (Blueprint $table) {
-            $table->key(Config::getSubscriptionKeyType(KeyType::BigInteger));
+            $table->key(Config::getPlanKeyType(KeyType::BigInteger));
 
-            $table->morphs('subscriber');
-            $table->morphs('subscribable');
-            $table
-                ->foreignIdFor(Config::getPlanClass(Plan::class))
-                ->nullable()
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
+            $table->boolean('active')->default(true);
+            $table->decimal('price')->nullable();
+
+            $table->json('extra')->nullable();
+            $table->order();
 
             $table->timestamp('expired_at')->nullable();
             $table->timestamps();

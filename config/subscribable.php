@@ -45,10 +45,7 @@ return [
         ],
     ],
 
-    'permissions' => [
-        'anonymous' => false,
-        'duplicate' => false,
-    ],
+    'permissions' => [],
 
     'actions' => [
         'create' => Yuges\Subscribable\Actions\CreateSubscriptionAction::class,
