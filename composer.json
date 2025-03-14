@@ -37,7 +37,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Yuges\\Package\\Tests\\": "tests/src"
+            "Yuges\\Subscribable\\Tests\\": "tests/src"
         }
     },
     "scripts": {

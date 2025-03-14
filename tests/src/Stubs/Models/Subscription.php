@@ -1,6 +1,6 @@
 <?php
 
-namespace Yuges\Package\Tests\Stubs\Models;
+namespace Yuges\Subscribable\Tests\Stubs\Models;
 
 use Yuges\Subscribable\Models\Subscription as ModelsSubscription;
 

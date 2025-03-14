@@ -53,7 +53,7 @@ class Config extends \Yuges\Package\Config\Config
     /** @return class-string<Subscriber> */
     public static function getSubscriberDefaultClass(mixed $default = null): string
     {
-        return self::get('models.subscriber.default', $default);
+        return self::get('models.subscriber.default.class', $default);
     }
 
     /** @return Collection<array-key, class-string<Subscriber>> */
@@ -72,7 +72,7 @@ class Config extends \Yuges\Package\Config\Config
     /** @return class-string<Subscribable> */
     public static function getSubscribableDefaultClass(mixed $default = null): string
     {
-        return self::get('models.subscribable.default', $default);
+        return self::get('models.subscribable.default.class', $default);
     }
 
     /** @return Collection<array-key, class-string<Subscribable>> */

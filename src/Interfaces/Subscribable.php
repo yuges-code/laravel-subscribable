@@ -11,9 +11,15 @@ interface Subscribable
 {
     public function subscriptions(): MorphMany;
 
+    public function subscribableSubscriptions(): MorphMany;
+
     public function latestSubscription(): MorphOne;
 
+    public function latestSubscribableSubscription(): MorphOne;
+
     public function oldestSubscription(): MorphOne;
+
+    public function oldestSubscribableSubscription(): MorphOne;
 
     public function subscribe(?Subscriber $subscriber = null, ?Plan $plan = null): Subscription;
 

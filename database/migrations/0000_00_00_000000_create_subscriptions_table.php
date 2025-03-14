@@ -24,8 +24,8 @@ return new class extends Migration
         Schema::create($this->table, function (Blueprint $table) {
             $table->key(Config::getSubscriptionKeyType(KeyType::BigInteger));
 
-            $table->morphs('subscriber');
-            $table->morphs('subscribable');
+            $table->keyMorphs(Config::getSubscriberKeyType(KeyType::BigInteger), 'subscriber');
+            $table->keyMorphs(Config::getSubscribableKeyType(KeyType::BigInteger), 'subscribable');
             $table
                 ->foreignIdFor(Config::getPlanClass(Plan::class))
                 ->nullable()

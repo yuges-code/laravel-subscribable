@@ -12,25 +12,43 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * @property Collection<array-key, Subscription> $subscription
+ * @property Collection<array-key, Subscription> $subscriptions
+ * @property Collection<array-key, Subscription> $subscribableSubscriptions
  * @property ?Subscription $latestSubscription
+ * @property ?Subscription $latestSubscribableSubscription
  * @property ?Subscription $oldestSubscription
+ * @property ?Subscription $oldestSubscribableSubscription
  */
 trait HasSubscriptions
 {
     public function subscriptions(): MorphMany
+    {
+        return $this->subscribableSubscriptions();
+    }
+
+    public function subscribableSubscriptions(): MorphMany
     {
         return $this->morphMany(Config::getSubscriptionClass(), 'subscribable');
     }
 
     public function latestSubscription(): MorphOne
     {
-        return $this->subscriptions()->one()->latestOfMany();
+        return $this->latestSubscribableSubscription();
+    }
+
+    public function latestSubscribableSubscription(): MorphOne
+    {
+        return $this->subscribableSubscriptions()->one()->latestOfMany();
     }
 
     public function oldestSubscription(): MorphOne
     {
-        return $this->subscriptions()->one()->oldestOfMany();
+        return $this->oldestSubscribableSubscription();
+    }
+
+    public function oldestSubscribableSubscription(): MorphOne
+    {
+        return $this->subscribableSubscriptions()->one()->oldestOfMany();
     }
 
     public function subscribe(?Subscriber $subscriber = null, ?Plan $plan = null): Subscription

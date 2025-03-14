@@ -1,8 +1,8 @@
 <?php
 
-namespace Yuges\Package\Tests\Feature;
+namespace Yuges\Subscribable\Tests\Feature;
 
-use Yuges\Package\Tests\TestCase;
+use Yuges\Subscribable\Tests\TestCase;
 use Yuges\Subscribable\Models\Subscription;
 
 class SubscriptionsTableTest extends TestCase

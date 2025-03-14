@@ -34,7 +34,7 @@ class ToggleSubscriptionAction
         }
 
         $subscription = $this->subscribable
-            ->subscriptions()
+            ->subscribableSubscriptions()
             ->getQuery()
             ->whereMorphedTo('subscriber', $subscriber)
             ->where('plan_id', '=', $plan?->getKey() ?? null)

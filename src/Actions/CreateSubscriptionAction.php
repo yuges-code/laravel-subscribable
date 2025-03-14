@@ -40,12 +40,12 @@ class CreateSubscriptionAction
         ];
 
         $subscription = $this->subscribable
-            ->subscriptions()
+            ->subscribableSubscriptions()
             ->getQuery()
             ->whereMorphedTo('subscriber', $subscriber)
             ->first();
 
-        return $subscription ?? $this->subscribable->subscriptions()->create($attributes);
+        return $subscription ?? $this->subscribable->subscribableSubscriptions()->create($attributes);
     }
 
     public function validateSubscriber(?Subscriber $subscriber = null): void

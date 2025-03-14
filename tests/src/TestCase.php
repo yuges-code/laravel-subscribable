@@ -1,6 +1,6 @@
 <?php
 
-namespace Yuges\Package\Tests;
+namespace Yuges\Subscribable\Tests;
 
 use Illuminate\Contracts\Config\Repository;
 use Orchestra\Testbench\Attributes\WithMigration; 
@@ -35,8 +35,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineDatabaseMigrations() 
     {
-        $this->loadMigrationsFrom(
-            __DIR__ . '/../../database/migrations/'
+        $this->loadMigrationsFrom([
+                __DIR__ . '/../../database/migrations/',
+                __DIR__ . '/Stubs/Migrations',
+            ]
         );
     }
 }
