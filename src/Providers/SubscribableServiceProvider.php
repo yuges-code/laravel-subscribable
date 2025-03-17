@@ -32,4 +32,11 @@ class SubscribableServiceProvider extends ServiceProvider
             __DIR__.'/../../database/seeders/' => database_path('seeders')
         ], 'subscribable-seeders');
     }
+
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/subscribable.php', 'subscribable'
+        );
+    }
 }
