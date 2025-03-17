@@ -28,7 +28,7 @@ trait HasSubscriptions
 
     public function subscribableSubscriptions(): MorphMany
     {
-        return $this->morphMany(Config::getSubscriptionClass(), 'subscribable');
+        return $this->morphMany(Config::getSubscriptionClass(Subscription::class), 'subscribable');
     }
 
     public function latestSubscription(): MorphOne

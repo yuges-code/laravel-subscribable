@@ -42,7 +42,11 @@
     <h3>🔔 Package for easily attaching subscriptions to Laravel eloquent models</h3>
 </div>
 
+<br>
+
 # 💿 Installation
+
+### → Composer
 
 You can install the package via composer:
 
@@ -50,7 +54,35 @@ You can install the package via composer:
 composer require yuges-code/laravel-subscribable
 ```
 
+### → Publishing Config
+
+Publishing the config file (config/subscribable.php) is optional:
+
+```
+php artisan vendor:publish --provider="Yuges\Subscribable\Providers\SubscribableServiceProvider" --tag="subscribable-config"
+```
+
+### → Publishing Migrations
+
+You need to publish the migration to create the subscriptions table:
+
+```
+php artisan vendor:publish --provider="Yuges\Subscribable\Providers\SubscribableServiceProvider" --tag="subscribable-migrations"
+```
+
+### → Running Migrations
+
+After that, you need to run migrations:
+
+```
+php artisan migrate
+```
+
+<br>
+
 # 🧪 Running Tests
+
+### → PHPUnit tests
 
 To run tests, run the following command:
 
@@ -58,9 +90,13 @@ To run tests, run the following command:
 composer test
 ```
 
+<br>
+
 # ⚖️ License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+<br>
 
 # 🙆🏼‍♂️ Authors Information
 
