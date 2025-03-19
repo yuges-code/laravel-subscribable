@@ -2,24 +2,30 @@
 
 namespace Yuges\Subscribable\Providers;
 
-use TypeError;
+use Yuges\Package\Data\Package;
 use Yuges\Subscribable\Config\Config;
-use Illuminate\Support\ServiceProvider;
 use Yuges\Subscribable\Models\Subscription;
+use Yuges\Package\Providers\PackageServiceProvider;
 use Yuges\Subscribable\Observers\SubscriptionObserver;
+use Yuges\Subscribable\Exceptions\InvalidSubscription;
 
-class SubscribableServiceProvider extends ServiceProvider
+class SubscribableServiceProvider extends PackageServiceProvider
 {
-    public function boot(): void
+    public function configure(Package $package): void
     {
-        $class = Config::getSubscriptionClass(Subscription::class);
+        $subscription = Config::getSubscriptionClass(Subscription::class);
 
-        if (! is_a(new $class, Subscription::class)) {
-            throw new TypeError('Invalid model');
+        if (! is_a($subscription, Subscription::class, true)) {
+            throw InvalidSubscription::doesNotImplementSubscription($subscription);
         }
 
-        $class::observe(new SubscriptionObserver);
+        $package
+            ->hasConfig('subscribable')
+            ->hasObserver($subscription, SubscriptionObserver::class);
+    }
 
+    public function packageBooted(): void
+    {
         $this->publishes([
             __DIR__.'/../../config/subscribable.php' => config_path('subscribable.php')
         ], 'subscribable-config');
@@ -31,12 +37,5 @@ class SubscribableServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../database/seeders/' => database_path('seeders')
         ], 'subscribable-seeders');
-    }
-
-    public function register(): void
-    {
-        $this->mergeConfigFrom(
-            __DIR__.'/../../config/subscribable.php', 'subscribable'
-        );
     }
 }
