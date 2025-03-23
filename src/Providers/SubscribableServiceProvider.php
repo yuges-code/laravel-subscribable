@@ -11,6 +11,8 @@ use Yuges\Subscribable\Exceptions\InvalidSubscription;
 
 class SubscribableServiceProvider extends PackageServiceProvider
 {
+    protected string $name = 'laravel-subscribable';
+
     public function configure(Package $package): void
     {
         $subscription = Config::getSubscriptionClass(Subscription::class);
@@ -20,22 +22,13 @@ class SubscribableServiceProvider extends PackageServiceProvider
         }
 
         $package
+            ->hasName($this->name)
             ->hasConfig('subscribable')
+            ->hasMigrations([
+                'create_plans_table',
+                'create_features_table',
+                'create_subscriptions_table',
+            ])
             ->hasObserver($subscription, SubscriptionObserver::class);
-    }
-
-    public function packageBooted(): void
-    {
-        $this->publishes([
-            __DIR__.'/../../config/subscribable.php' => config_path('subscribable.php')
-        ], 'subscribable-config');
-
-        $this->publishes([
-            __DIR__.'/../../database/migrations/' => database_path('migrations')
-        ], 'subscribable-migrations');
-
-        $this->publishes([
-            __DIR__.'/../../database/seeders/' => database_path('seeders')
-        ], 'subscribable-seeders');
     }
 }
