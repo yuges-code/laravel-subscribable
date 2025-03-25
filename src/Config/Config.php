@@ -60,7 +60,7 @@ class Config extends \Yuges\Package\Config\Config
     public static function getSubscriberAllowedClasses(mixed $default = null): Collection
     {
         return Collection::make(
-            self::get('models.subscriber.allowed', $default)
+            self::get('models.subscriber.allowed.classes', $default)
         );
     }
 
@@ -79,7 +79,7 @@ class Config extends \Yuges\Package\Config\Config
     public static function getSubscribableAllowedClasses(mixed $default = null): Collection
     {
         return Collection::make(
-            self::get('models.subscribable.allowed', $default)
+            self::get('models.subscribable.allowed.classes', $default)
         );
     }
 
