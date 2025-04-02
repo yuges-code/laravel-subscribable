@@ -3,11 +3,11 @@
 namespace Yuges\Subscribable\Tests;
 
 use Illuminate\Contracts\Config\Repository;
-use Orchestra\Testbench\Attributes\WithMigration; 
+use Orchestra\Testbench\Attributes\WithMigration;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Yuges\Subscribable\Providers\SubscribableServiceProvider;
 
-#[WithMigration] 
+#[WithMigration]
 class TestCase extends \Orchestra\Testbench\TestCase
 {
     use RefreshDatabase;
@@ -26,14 +26,14 @@ class TestCase extends \Orchestra\Testbench\TestCase
         });
     }
 
-    protected function getPackageProviders($app) 
+    protected function getPackageProviders($app)
     {
         return [
             SubscribableServiceProvider::class,
         ];
     }
 
-    protected function defineDatabaseMigrations() 
+    protected function defineDatabaseMigrations()
     {
         $this->loadMigrationsFrom([
                 __DIR__ . '/../../database/migrations/',
