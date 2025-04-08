@@ -11,7 +11,7 @@ class SubscribeTest extends TestCase
 {
     public function testSubscribeUserToChannel()
     {
-        config(['subscribable.models.subscriber.allowed' => [User::class, Channel::class]]);
+        config(['subscribable.models.subscriber.allowed.classes' => [User::class, Channel::class]]);
 
         $user = User::query()->create([
             'name' => 'Georgy',
