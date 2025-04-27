@@ -59,7 +59,7 @@ composer require yuges-code/laravel-subscribable
 Publishing the config file (config/subscribable.php) is optional:
 
 ```
-php artisan vendor:publish --provider="Yuges\Subscribable\Providers\SubscribableServiceProvider" --tag="subscribable-config"
+php artisan vendor:publish --provider="Yuges\Subscribable\Providers\SubscribableServiceProvider" --tag="subscribable-configs"
 ```
 
 ### → Publishing Migrations
