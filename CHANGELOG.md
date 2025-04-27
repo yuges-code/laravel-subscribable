@@ -2,6 +2,10 @@
 
 All notable changes to laravel-subscribable will be documented in this file.
 
+## 1.0.3 - 2025-04-27
+
+**Full Changelog**: https://github.com/yuges-code/laravel-subscribable/compare/1.0.2...1.0.3
+
 ## 1.0.2 - 2025-03-17
 
 **Full Changelog**: https://github.com/yuges-code/laravel-subscribable/compare/1.0.1...1.0.2
