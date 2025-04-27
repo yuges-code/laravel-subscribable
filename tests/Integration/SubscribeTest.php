@@ -2,6 +2,7 @@
 
 namespace Yuges\Subscribable\Tests\Integration;
 
+use Illuminate\Support\Facades\Auth;
 use Yuges\Subscribable\Tests\TestCase;
 use Yuges\Subscribable\Models\Subscription;
 use Yuges\Subscribable\Tests\Stubs\Models\User;
@@ -27,17 +28,22 @@ class SubscribeTest extends TestCase
         $subscription = $channel->subscribe($user);
 
         $this->assertDatabaseHas(Subscription::getTableName(), [
-            'subscriber_id' => $channel->id,
+            'subscriber_id' => $channel->getKey(),
             'subscriber_type' => $channel->getMorphClass(),
-            'subscribable_id' => $user->id,
+            'subscribable_id' => $user->getKey(),
             'subscribable_type' => $user->getMorphClass(),
         ]);
 
         $this->assertDatabaseHas(Subscription::getTableName(), [
-            'subscriber_id' => $user->id,
+            'subscriber_id' => $user->getKey(),
             'subscriber_type' => $user->getMorphClass(),
-            'subscribable_id' => $channel->id,
+            'subscribable_id' => $channel->getKey(),
             'subscribable_type' => $channel->getMorphClass(),
         ]);
+
+        Auth::setUser($user);
+
+        $this->assertEquals($user->getKey(), $channel->subscription->subscriber_id);
+        $this->assertEquals($user->getMorphClass(), $channel->subscription->subscriber_type);
     }
 }

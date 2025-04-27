@@ -5,6 +5,8 @@ namespace Yuges\Subscribable\Traits;
 use Yuges\Subscribable\Models\Plan;
 use Illuminate\Support\Facades\Auth;
 use Yuges\Subscribable\Config\Config;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Yuges\Subscribable\Models\Subscription;
 use Illuminate\Database\Eloquent\Collection;
 use Yuges\Subscribable\Interfaces\Subscriber;
@@ -12,15 +14,27 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * @property Collection<array-key, Subscription> $subscriptions
- * @property Collection<array-key, Subscription> $subscribableSubscriptions
+ * @property ?Subscription $subscription
  * @property ?Subscription $latestSubscription
  * @property ?Subscription $latestSubscribableSubscription
  * @property ?Subscription $oldestSubscription
  * @property ?Subscription $oldestSubscribableSubscription
+ * @property Collection<array-key, Subscription> $subscriptions
+ * @property Collection<array-key, Subscription> $subscribableSubscriptions
  */
 trait HasSubscriptions
 {
+    public function subscription(): MorphOne
+    {
+        $subscriber = $this->defaultSubscriber();
+
+        return $this->subscribableSubscriptions()->one()->ofMany([
+            'id' => 'max',
+        ], function (Builder $query) use ($subscriber) {
+            $query->whereMorphedTo('subscriber', $subscriber);
+        });
+    }
+
     public function subscriptions(): MorphMany
     {
         return $this->subscribableSubscriptions();
@@ -28,6 +42,7 @@ trait HasSubscriptions
 
     public function subscribableSubscriptions(): MorphMany
     {
+        /** @var Model $this */
         return $this->morphMany(Config::getSubscriptionClass(Subscription::class), 'subscribable');
     }
 

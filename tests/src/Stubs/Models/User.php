@@ -2,14 +2,15 @@
 
 namespace Yuges\Subscribable\Tests\Stubs\Models;
 
-use Yuges\Package\Models\Model;
+use Yuges\Package\Traits\HasTable;
 use Yuges\Subscribable\Interfaces\Subscriber;
 use Yuges\Subscribable\Interfaces\Subscribable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Yuges\Subscribable\Traits\HasSubscriptionsAndCanSubscribe;
 
-class User extends Model implements Subscriber, Subscribable
+class User extends Authenticatable implements Subscriber, Subscribable
 {
-    use HasSubscriptionsAndCanSubscribe;
+    use HasSubscriptionsAndCanSubscribe, HasTable;
 
     protected $table = 'users';
 
