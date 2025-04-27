@@ -5,13 +5,11 @@ namespace Yuges\Subscribable\Models;
 use Yuges\Package\Models\Model;
 use Yuges\Subscribable\Traits\HasSubscriber;
 use Yuges\Subscribable\Traits\HasSubscribable;
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Subscription extends Model
 {
     use
-        HasUlids,
         HasFactory,
         HasSubscriber,
         HasSubscribable;

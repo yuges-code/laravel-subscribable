@@ -35,7 +35,6 @@ return new class extends Migration
 
             $table->timestamp('expired_at')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 };

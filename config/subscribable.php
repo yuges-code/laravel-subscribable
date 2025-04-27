@@ -2,23 +2,21 @@
 
 // Config for yuges/subscribable
 
-use Yuges\Package\Enums\KeyType;
-
 return [
     /*
      * FQCN (Fully Qualified Class Name) of the models to use for subscriptions
      */
     'models' => [
         'plan' => [
-            'key' => KeyType::Ulid,
+            'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'class' => Yuges\Subscribable\Models\Plan::class,
         ],
         'feature' => [
-            'key' => KeyType::Ulid,
+            'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'class' => Yuges\Subscribable\Models\Feature::class,
         ],
         'subscriber' => [
-            'key' => KeyType::Ulid,
+            'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'default' => [
                 'class' => \App\Models\User::class,
             ],
@@ -29,7 +27,7 @@ return [
             ],
         ],
         'subscribable' => [
-            'key' => KeyType::Ulid,
+            'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'default' => [
                 'class' => \App\Models\User::class,
             ],
@@ -40,7 +38,7 @@ return [
             ],
         ],
         'subscription' => [
-            'key' => KeyType::Ulid,
+            'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'class' => Yuges\Subscribable\Models\Subscription::class,
         ],
     ],

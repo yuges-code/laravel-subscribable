@@ -19,12 +19,11 @@ return new class extends Migration
         }
 
         Schema::create($this->table, function (Blueprint $table) {
-            $table->key(KeyType::Ulid);
+            $table->key(KeyType::BigInteger);
 
             $table->string('name');
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 };
